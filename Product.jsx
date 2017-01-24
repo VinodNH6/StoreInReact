@@ -14,13 +14,27 @@ class Product extends Component {
     }
 
 
-    inc(item) {
+    inc() {
 
+    }
+
+
+    checkitemsqty(item) {
+      alert(item.qty);
+            if(item.qty == 0) {   /*this.props.*/
+              return <button onClick={this.addtocart.bind(this)}>Add to Cart</button>;
+            }
+            else {
+              return <div> <input type="button" value="-" onClick={this.dec.bind(this)}/>  {item.qty} in cart  <input type="button" value="+" onClick={this.inc.bind(this)}/> </div>;
+            }
+            return <p> NOT AVAILABLE</p>;
     }
 
     render(){
         
         var item = this.props.item;
+
+
 
         return (
 
@@ -30,12 +44,22 @@ class Product extends Component {
             <p> {item.product}</p>
             <p> {item.package}</p>
             <p> {item.price}</p>
-            <button onClick={this.addtocart.bind(this)}>Add to Cart</button>
-            <div> 
-              <input type="button" value="-" onClick={this.dec.bind(this)}/>  
-              {item.qty} in cart  
-              <input type="button" value="+" onClick={this.inc.bind(this)}/>
-            </div>
+
+{/*            if(item.qty === 0)
+            {
+              <button onClick={this.addtocart.bind(this)}>Add to Cart</button>
+            }
+            else
+            {
+              <div> 
+                <input type="button" value="-" onClick={this.dec.bind(this)}/>  
+                {item.qty} in cart  
+                <input type="button" value="+" onClick={this.inc.bind(this)}/>
+              </div>
+            }*/}
+
+            {this.checkitemsqty(item)}
+
           </div>
 
         );
