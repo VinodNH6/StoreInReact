@@ -21,6 +21,10 @@ class Cart extends React.Component {
     }
 
 
+/*    componentDidUpdate() {
+        this.calculateAmount();   ERROR: Uncaught RangeError: Maximum call stack size exceeded
+    }*/
+
     calculateAmount() {
       /*totalRs = 0;*/
       console.log("calculateAmount");
@@ -38,11 +42,12 @@ class Cart extends React.Component {
     };
 
 
-    removefromcart(event, index) {
+    removefromcart(event, index, item) {
       alert("parent: removefromcart");
       console.log(event.target);
       alert(index);
-      this.props.removefromcart(event, index);
+      this.props.removefromcart(event, index, item);
+      this.calculateAmount();
     }
 
    	render() {
