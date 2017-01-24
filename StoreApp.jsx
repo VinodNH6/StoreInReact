@@ -65,17 +65,26 @@ class StoreApp extends React.Component {
 
 
 
-    addtocart(event, value) {
+    addtocart(event, item) {
     	alert("super parent: addtocart");
       	console.log(event.target);
-      	alert(value.brand);
+      	alert(item.brand);
 
     	var cart1 = this.state.cart;
-    	cart1.push(value);
+/*      item.qty++;*/
+    	cart1.push(item);
     	console.log(cart1);
     	/*this.state.cart.push(item);*/
 		/*     $scope.inc(item);
 		$scope.calculateAmount();*/
+
+    this.state.items.forEach(function(it){
+       if(it.brand === item.brand) {
+           item.qty++;
+       }
+    });
+
+
 		this.setState({
 			cart: cart1
 		});
@@ -83,21 +92,27 @@ class StoreApp extends React.Component {
 	}
 
 
-    removefromcart(event, index) {
+    removefromcart(event, index, item) {
     	alert("super parent: removefromcart");
-      	console.log(event.target);
-      	alert(index);
+      console.log(event.target);
+      alert(index);
 
     	var cart1 = this.state.cart;
    		cart1.splice(index, 1);
     	console.log(cart1);
-    	/*this.state.cart.push(item);*/
-		/*     $scope.inc(item);
-		$scope.calculateAmount();*/
-		this.setState({
-			cart: cart1
-		});
-		console.log(this.state.cart);
+
+      this.state.items.forEach(function(it){
+         if(it.brand === item.brand) {
+           item.qty--;
+         }
+      });
+/*    this.state.items[index].qty--;*/
+
+		  this.setState({
+			 cart: cart1
+		  });
+
+		  console.log(this.state.cart);
 	}
 
     render() {
