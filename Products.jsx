@@ -4,11 +4,11 @@ import Product from './Product.jsx';
 class Products extends React.Component {
 
 
-    addtocart(event, value) {
+    addtocart(event, item) {
       alert("parent: addtocart");
       console.log(event.target);
-      alert(value.brand);
-      this.props.addtocart(event, value);
+      alert(item.brand);
+      this.props.addtocart(event, item);
     }
 
 
