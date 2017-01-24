@@ -7,7 +7,7 @@ class CartItem extends React.Component {
 		alert("child: removefromcart");
       	console.log(event.target);
       	alert(this.props.index);
-      	this.props.removefromcart(event, this.props.index);
+      	this.props.removefromcart(event, this.props.index, this.props.item);
 	}
 
    	render() {
